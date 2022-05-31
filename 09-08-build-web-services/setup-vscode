@@ -1,0 +1,3 @@
+#!/bin/bash
+
+set-workdir /opt/intersystems/src/services

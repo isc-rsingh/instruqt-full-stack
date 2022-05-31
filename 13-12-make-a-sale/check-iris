@@ -1,0 +1,21 @@
+#!/bin/bash
+
+cat /tmp/check-iris
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+
+do $system.Process.SetZEOF(-1)
+set file = "/tmp/check-iris", io = $io
+open file:("R")
+set ok = 0
+for { use file read line use io quit:((line="")||ok)  zw line set $lb(id, cnt)=$listfromstring(line, "="),obj = ##class(ICO.catalog).%OpenId(id),ok = obj.quantity < cnt }
+close file
+
+if 'ok do ##class(%zInstruqt.Check).Failure("Did you try to sell anything?")
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

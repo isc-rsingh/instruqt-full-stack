@@ -1,0 +1,145 @@
+#!/bin/bash
+
+mkdir /home/coder/.ssh
+cat <<EOF > /home/coder/.ssh/instruqt
+-----BEGIN OPENSSH PRIVATE KEY-----
+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
+-----END OPENSSH PRIVATE KEY-----
+EOF
+
+chmod 0400 /home/coder/.ssh/instruqt
+chown -R coder:coder /home/coder/.ssh
+
+cat <<EOF > /home/coder/.ssh/config
+Host github.com
+        Hostname github.com
+        IdentityFile=/home/coder/.ssh/instruqt
+EOF
+
+mkdir -p /opt/intersystems/
+
+chown -R coder:coder /opt/intersystems/
+su - coder <<EOSU
+ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+cd /opt/intersystems/
+git clone --depth=1 git@github.com:caretdev/instruqt-full-stack-tutorial.git .
+rm -rf .git
+EOSU
+
+set-workdir /opt/intersystems/src/setup
+
+echo 'su - coder -s /bin/bash' > /root/coder
+chmod +x /root/coder
+
+echo 'cd /opt/intersystems/src/setup' >> /home/coder/.bashrc
+
+cat <<EOF | echo "$(jq -s '.[0] + .[1]' ~/.local/share/code-server/User/settings.json - )" > ~/.local/share/code-server/User/settings.json
+{
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.profiles.linux":{
+    "bash": {
+      "path": "/root/coder",
+      "icon": "terminal-bash"
+    }
+  },
+  "objectscript.conn": {
+    "active": true,
+    "host": "iris",
+    "port": 52773,
+    "ns": "USER",
+    "username": "tech",
+    "password": "demo"
+  },
+  "sqltools.autoConnectTo": ["IRIS"],
+  "sqltools.autoOpenSessionFiles": true,
+  "sqltools.connections": [
+    {
+      "namespace": "USER",
+      "connectionMethod": "Server and Port",
+      "showSystem": false,
+      "previewLimit": 50,
+      "server": "iris",
+      "port": 52773,
+      "askForPassword": false,
+      "driver": "InterSystems IRIS",
+      "name": "IRIS",
+      "username": "_SYSTEM",
+      "password": "SYS"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
+EOF
+
+cat <<'EOF' >> /bin/iris-import
+#!/bin/bash
+
+path=$1
+doc=$2
+
+url=http://iris:52773/api/atelier/v1/USER
+
+auth=(-u _SYSTEM:SYS)
+args=(-v -H 'Content-Type: application/json' --data-binary @-)
+
+# Put doc
+jq --raw-input --slurp 'split("\n")' $path \
+  | jq '{ enc: false, content: .}' \
+  | curl -X PUT "${auth[@]}" "${args[@]}" $url/doc/$doc?ignoreConflict=1
+
+# Compile
+echo "[\"${doc}\"]" | curl "${auth[@]}" "${args[@]}" $url/action/compile
+
+# Export to file
+curl "${auth[@]}" $url/doc/$doc \
+  | jq '.result.content[]' --raw-output > $path
+
+EOF
+
+chmod +x /bin/iris-import

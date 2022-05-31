@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /opt/intersystems/src/setup
+
+odbcinst -i -d -f pyodbc_wheel/odbcinst.ini
+
+su - coder <<EOSU
+cd /opt/intersystems/src/setup
+python3 manifest_importer.py
+EOSU

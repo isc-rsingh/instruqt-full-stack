@@ -1,0 +1,13 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -U%SYS
+set props("DispatchClass") = "ICO.Handler"
+set props("NameSpace") = "USER"
+set props("MatchRoles") = ":%All"
+set props("AutheEnabled") = 96
+
+do ##class(Security.Applications).Create("/api/coffeeco", .props)
+halt
+EOF
+EOSU

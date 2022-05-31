@@ -1,0 +1,25 @@
+#!/bin/bash
+
+cat <<'EOF' > /tmp/ICO.Test.cls
+Class ICO.Test
+{
+
+ClassMethod QueryDB() As %Status
+{
+  set sqlquery = "SELECT * FROM ICO.inventory"
+  set rs = ##class(%SQL.Statement).%ExecDirect(,sqlquery)
+  while rs.%Next() {
+      Write !, rs.%Get("vendor_id")
+  }
+}
+
+}
+EOF
+
+su - irisowner <<EOSU
+/usr/irissys/dev/Cloud/ICM/waitISC.sh
+cat <<'EOF' | iris session iris -UUSER
+do ##class(%SYSTEM.OBJ).Load("/tmp/ICO.Test.cls","ck")
+halt
+EOF
+EOSU

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ ! -d /opt/intersystems/src/frontend/node_modules ]; then
+  fail-message "Did you execute `yarn install`?"
+  exit 1
+fi

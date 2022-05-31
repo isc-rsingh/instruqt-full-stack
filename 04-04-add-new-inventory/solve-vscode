@@ -1,0 +1,7 @@
+#!/bin/bash
+
+su - coder <<EOSU
+cd /opt/intersystems/src/setup
+echo '{"items": [{"vendor_id": "test","vendor_product_code": "test","quantity_kg": 1}]}' > order_manifest.json
+python3 manifest_importer.py
+EOSU

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd /opt/intersystems/src/setup/
+if md5sum --check /tmp/order_manifest.json.md5; then 
+  fail-message "Just change order_manifest.json, and add your data."
+  exit 1
+fi

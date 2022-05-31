@@ -1,0 +1,19 @@
+#!/bin/bash
+
+count=$(find /opt/intersystems/src/services/samples -name '*.json' | wc -l)
+if [ $count -ne 5 ]; then
+  fail-message "Did you call createproducts.sh?"
+fi
+
+list=$((curl -s http://iris:52773/api/coffeeco/catalog/getproducts/1 | jq '.products[].product_code' --raw-output \
+     && curl -s http://iris:52773/api/coffeeco/catalog/getproducts/0 | jq '.products[].product_code' --raw-output) \
+      | sort | uniq | tr '\n' ',')
+
+if [[ $list != *'BRAZILDARK'* ]] && \
+   [[ $list != *'ETHIOPIAMEDIUM'* ]] && \
+   [[ $list != *'GUATEMALALIGHT'* ]] && \
+   [[ $list != *'SUMATRADARK'* ]] && \
+   [[ $list != *'SUMATRALIGHT'* ]]
+then
+  fail-message "Did you call loadproducts.sh?"
+fi

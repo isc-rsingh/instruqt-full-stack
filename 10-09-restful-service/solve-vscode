@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cp /opt/intersystems/src/services/src_Sample/ICO/Handler.cls /opt/intersystems/src/services/src/ICO/Handler.cls
+iris-import "/opt/intersystems/src/services/src/ICO/Handler.cls" "ICO.Handler.cls"

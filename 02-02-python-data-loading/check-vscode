@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ ! -f /etc/odbcinst.ini ] || ! grep 'libirisodbcur6435' /etc/odbcinst.ini; then 
+  fail-message "Do not forget to install ODBC driver"
+  exit 1
+fi
+

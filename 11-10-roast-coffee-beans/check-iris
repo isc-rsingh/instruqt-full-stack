@@ -1,0 +1,18 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set obj = ##class(ICO.inventory).%OpenId(1)
+if '$Isobject(obj) { do ##class(%zInstruqt.Check).Failure("No object with ID 1") }
+
+set file = "/tmp/check-iris", io = $io
+open file:("R") use file read quantitykg use io close file
+
+if obj.quantitykg=quantitykg do ##class(%zInstruqt.Check).Failure("Did you call the query with curl?")
+
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

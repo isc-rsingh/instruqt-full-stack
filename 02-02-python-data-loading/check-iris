@@ -1,0 +1,15 @@
+#!/bin/bash
+
+su - irisowner <<EOSU
+cat <<EOF | iris session iris -UUSER
+set tRes = ##class(%SQL.Statement).%ExecDirect(,"SELECT COUNT(*) Cnt FROM ICO.inventory")
+if tRes.%SQLCODE'=0 do ##class(%zInstruqt.Check).AddError(.errors, "Did you drop the ICO.inventory table?")
+if tRes.%Next(),tRes.Cnt<5 do ##class(%zInstruqt.Check).AddError(.errors, "Did you run manifest_importer.py script?")
+
+do ##class(%zInstruqt.Check).Failure(.errors)
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

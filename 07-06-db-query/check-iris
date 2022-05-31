@@ -1,0 +1,17 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+
+set sql = "SELECT * FROM ICO . inventory ORDER BY vendor_id"
+set msg = "How many records in ICO.inventory?"
+do ##class(%zInstruqt.Check).CachedQuery("ICO", "inventory", sql, msg, .errors)
+
+do ##class(%zInstruqt.Check).Failure(.errors)
+halt
+EOF
+EOSU
+
+exit=$?
+
+exit $exit

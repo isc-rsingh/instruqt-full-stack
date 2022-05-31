@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set-workdir /opt/intersystems/src/services
+
+cat <<'EOF' > /opt/intersystems/src/services/coffeeco.http
+GET http://iris:52773/api/coffeeco/inventory/listbeans HTTP/1.1
+EOF

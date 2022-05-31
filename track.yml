@@ -1,0 +1,30 @@
+slug: full-stack-tutorial
+id: s0ynild6wctq
+type: track
+title: Full Stack Tutorial
+teaser: Build the IT infrastructure for a company that roasts and sells delicious,
+  freshly roasted coffee. You’ll learn how the InterSystems IRIS data platform can
+  serve as the backbone of your IT architecture.
+description: |-
+  This tutorial is divided into three parts:
+
+  - **Part 1:** create database tables and write raw coffee bean deliveries to the database.
+  - **Part 2:** build web services that power the roasting operations and online store.
+  - **Part 3:** build a web storefront in Vue.js
+  ![overview](https://gettingstarted.intersystems.com/wp-content/uploads/2021/03/IrisCoffee-Sketch1-01-500x281.png)
+icon: https://cdn.instruqt.com/assets/intersystems/vscode.png
+level: beginner
+tags:
+- iris
+- intersystems
+- fullstack
+owner: intersystems
+developers:
+- dmitry@caretdev.com
+- nikolay.solovyev@caretdev.com
+- raj.singh@intersystems.com
+- ssh@banksiaglobal.com
+private: false
+published: false
+skipping_enabled: true
+checksum: "1434968416763012032"

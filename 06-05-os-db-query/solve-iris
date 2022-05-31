@@ -1,0 +1,10 @@
+#!/bin/bash
+
+su - irisowner <<EOSU
+cat <<EOF | iris session iris -UUSER
+set item = ##class(ICO.inventory).%OpenId(1)
+set item.quantitykg=300
+do item.%Save()
+halt
+EOF
+EOSU

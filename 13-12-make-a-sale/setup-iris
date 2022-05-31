@@ -1,0 +1,13 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set rs = ##class(ICO.catalog).ExtentFunc()
+set file = "/tmp/check-iris", io = $io
+open file:("WNS")
+while rs.%Next() { set obj = ##class(ICO.catalog).%OpenId(rs.ID) use file write rs.ID,"=",obj.quantity,! use io }
+close file
+
+halt
+EOF
+EOSU

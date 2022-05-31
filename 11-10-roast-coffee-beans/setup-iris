@@ -1,0 +1,16 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set obj = ##class(ICO.inventory).%OpenId(1)
+if '$Isobject(obj) { do ##class(%zInstruqt.Check).Failure("No object with ID 1") }
+
+set file = "/tmp/check-iris", io = $io
+open file:("WNS") use file write obj.quantitykg use io close file
+
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

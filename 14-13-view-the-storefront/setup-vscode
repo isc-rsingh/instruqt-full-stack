@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set-workdir /opt/intersystems/src/frontend
+echo 'cd /opt/intersystems/src/frontend' >> /home/coder/.bashrc
+
+chown -R coder:coder /home/coder
+# prepare local cache
+su - coder <<'EOSU'
+cd /opt/intersystems/src/frontend
+yarn install || true
+rm -rf /opt/intersystems/src/frontend/node_modules || true
+EOSU

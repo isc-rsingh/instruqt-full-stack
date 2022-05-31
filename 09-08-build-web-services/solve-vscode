@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp /opt/intersystems/src/services/src_Sample/ICO/catalog.cls /opt/intersystems/src/services/src/ICO/catalog.cls
+iris-import "/opt/intersystems/src/services/src/ICO/catalog.cls" "ICO.catalog.cls"
+
+cp /opt/intersystems/src/services/src_Sample/ICO/inventory.cls /opt/intersystems/src/services/src/ICO/inventory.cls
+iris-import "/opt/intersystems/src/services/src/ICO/inventory.cls" "ICO.inventory.cls"

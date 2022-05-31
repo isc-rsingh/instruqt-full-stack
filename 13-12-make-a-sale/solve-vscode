@@ -1,0 +1,4 @@
+#!/bin/bash
+
+curl -v -X POST http://iris:52773/api/coffeeco/catalog/sellproduct/1/2
+curl -v -X POST http://iris:52773/api/coffeeco/catalog/sellproduct/2/2

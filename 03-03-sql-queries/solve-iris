@@ -1,0 +1,10 @@
+#!/bin/bash
+
+su - irisowner <<EOSU
+cat <<EOF | iris session iris -UUSER
+set tRes = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM ICO.inventory")
+set tRes = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM ICO.inventory WHERE quantity_kg > 100")
+set tRes = ##class(%SQL.Statement).%ExecDirect(,"SELECT * FROM ICO.inventory WHERE vendor_id LIKE 'DKE'")
+halt
+EOF
+EOSU

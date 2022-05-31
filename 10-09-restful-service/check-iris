@@ -1,0 +1,20 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set tClassDef = ##class(%Dictionary.ClassDefinition).%OpenId("ICO.Handler")
+if '$Isobject(tClassDef) { do ##class(%zInstruqt.Check).Failure("Did you save file Handler.cls?") }
+
+set $namespace = "%SYS"
+set sc = ##class(Security.Applications).Get("/api/coffeeco", .props)
+zwrite props
+if 'sc do ##class(%zInstruqt.Check).Failure("Did you create the new web application?")
+if $get(props("DispatchClass"))'="ICO.Handler" do ##class(%zInstruqt.Check).Failure("Do not forget too set Dispatch Class")
+if $get(props("MatchRoles"))'[":%All" do ##class(%zInstruqt.Check).Failure("%All role needs to get Unauthenticated access")
+if '$zboolean($get(props("AutheEnabled"))\64,1,1) do ##class(%zInstruqt.Check).Failure("Why you disabled Unauthenticated access?")
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

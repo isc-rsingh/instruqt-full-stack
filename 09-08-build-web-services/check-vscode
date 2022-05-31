@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ ! -f /opt/intersystems/src/services/src/ICO/catalog.cls ] && [ ! -f /opt/intersystems/src/services/src/ICO/inventory.cls ]; then
+  fail-message "Not found file for classes ICO.catalog and ICO.inventory"
+  exit 1
+fi
+if [ ! -f /opt/intersystems/src/services/src/ICO/catalog.cls ]; then
+  fail-message "Not found file for class ICO.catalog"
+  exit 1
+fi
+if [ ! -f /opt/intersystems/src/services/src/ICO/inventory.cls ]; then
+  fail-message "Not found file for class ICO.inventory"
+  exit 1
+fi

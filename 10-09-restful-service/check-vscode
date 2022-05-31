@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f /opt/intersystems/src/services/src/ICO/Handler.cls ]; then
+  fail-message "Not found file for class ICO.Handler"
+  exit 1
+fi
+
+if ! curl http://iris:52773/api/coffeeco/inventory/listbeans ; then
+  fail-message "REST service did not configure properly"
+  exit 1
+fi

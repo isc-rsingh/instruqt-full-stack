@@ -1,0 +1,18 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set tClassDef = ##class(%Dictionary.ClassDefinition).%OpenId("ICO.catalog")
+if '$Isobject(tClassDef) { do ##class(%zInstruqt.Check).Failure("Did you save file catalog.cls?") }
+if tClassDef.Super'["%JSON.Adaptor"  { do ##class(%zInstruqt.Check).Failure("Do not forget to save catalog.cls after copy?") }
+
+set tClassDef = ##class(%Dictionary.ClassDefinition).%OpenId("ICO.inventory")
+if '$Isobject(tClassDef) { do ##class(%zInstruqt.Check).Failure("Did you save file inventory.cls?") }
+if tClassDef.Super'["%JSON.Adaptor"  { do ##class(%zInstruqt.Check).Failure("Do not forget to save inventory.cls after copy?") }
+
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

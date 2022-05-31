@@ -1,0 +1,4 @@
+#!/bin/bash
+
+set-workdir /opt/intersystems/src/services
+echo 'cd /opt/intersystems/src/services' >> /home/coder/.bashrc

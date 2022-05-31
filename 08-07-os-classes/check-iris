@@ -1,0 +1,14 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set tClassDef = ##class(%Dictionary.ClassDefinition).%OpenId("ICO.Test")
+if '$Isobject(tClassDef) { do ##class(%zInstruqt.Check).Failure("Did you save the file?") }
+if '$system.CLS.IsMthd("ICO.Test", "QueryDB") { do ##class(%zInstruqt.Check).Failure("Did you define the method?") }
+
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

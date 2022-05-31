@@ -1,0 +1,24 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+
+set sql = "SELECT * FROM ICO . inventory"
+set msg = "How many records in ICO.inventory?"
+do ##class(%zInstruqt.Check).CachedQuery("ICO", "inventory", sql, msg, .errors)
+
+set sql = "SELECT * FROM ICO . inventory WHERE quantity_kg > ? "
+set msg = "Did you query for large deliveries?"
+do ##class(%zInstruqt.Check).CachedQuery("ICO", "inventory", sql, msg, .errors)
+
+set sql = "SELECT * FROM ICO . inventory WHERE vendor_id LIKE ? "
+set msg = "What was delivered from DKE?"
+do ##class(%zInstruqt.Check).CachedQuery("ICO", "inventory", sql, msg, .errors)
+
+do ##class(%zInstruqt.Check).Failure(.errors)
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit

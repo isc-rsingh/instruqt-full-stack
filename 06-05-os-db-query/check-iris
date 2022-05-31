@@ -1,0 +1,13 @@
+#!/bin/bash
+
+su - irisowner <<'EOSU'
+cat <<'EOF' | iris session iris -UUSER
+set item = ##class(ICO.inventory).%OpenId(1)
+if '$isobject(item) { do ##class(%zInstruqt.Check).Failure("Is there a record with ID = 1 in ICO.inventory?") }
+if (item.quantitykg'=300) { do ##class(%zInstruqt.Check).Failure("Have you changed the value of the 'quantitykg' field?") }
+halt
+EOF
+EOSU
+
+exit=$?
+exit $exit
